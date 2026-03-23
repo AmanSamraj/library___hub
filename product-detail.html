@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Detail</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page">
+
+<nav class="page-switcher" aria-label="Quick page links">
+  <a href="index.html">Home</a>
+  <a href="product.html">Products</a>
+  <a href="product-detail.html">Product Detail</a>
+  <a href="cart.html">Cart</a>
+  <a href="checkout.html">Checkout</a>
+  <a href="login.html">Login</a>
+  <a href="production.html">Production</a>
+</nav>
+
+<section class="section detail-layout">
+  <div class="detail-media interactive-card">
+    <img id="detailImage" src="images/img1.png" alt="Atomic Habits">
+  </div>
+
+  <div class="detail-panel interactive-card">
+    <div id="detailBadge" class="eyebrow">Reader Favorite</div>
+    <h1 id="detailTitle">Atomic Habits</h1>
+    <p id="detailCopy" class="detail-copy">
+      Atomic Habits by James Clear helps build good habits, break bad ones, and create a repeatable system for long-term growth.
+    </p>
+
+    <div class="detail-stats">
+      <span class="rating-chip">4.8 ★</span>
+      <span>Bestseller</span>
+      <span>Fast Delivery</span>
+    </div>
+
+    <h3 id="detailPrice" class="detail-price">Price: ₹499</h3>
+
+    <div class="hero-actions">
+      <button id="detailAddToCart" class="btn ghost" type="button">Add to Cart</button>
+      <button id="detailBuyNow" class="btn primary" type="button">Buy Now</button>
+    </div>
+  </div>
+</section>
+
+<script src="js/api-client.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/product-detail.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Library Hub</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page">
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-logo">Library Hub</div>
+    <div class="brand-text">
+      <div class="brand-name">BookShelf</div>
+      <div class="brand-sub">online book store</div>
+    </div>
+  </div>
+
+  <div class="deliver">
+    <div class="deliver-label">Deliver to</div>
+    <div class="deliver-value">India</div>
+  </div>
+
+  <div class="search">
+    <input id="searchInput" type="text" placeholder="Search books, authors, ISBN">
+    <button id="searchButton" class="btn" type="button">Search</button>
+  </div>
+
+  <div class="actions">
+    <a class="btn ghost" href="login.html">Login/Register</a>
+    <a class="btn ghost" href="login.html">Account</a>
+    <a class="btn ghost cart" href="cart.html">Cart</a>
+  </div>
+</header>
+
+<nav class="page-switcher" aria-label="Quick page links">
+  <a href="index.html">Home</a>
+  <a href="product.html">Products</a>
+  <a href="product-detail.html">Product Detail</a>
+  <a href="cart.html">Cart</a>
+  <a href="checkout.html">Checkout</a>
+  <a href="login.html">Login</a>
+  <a href="production.html">Production</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Fresh Reads - Fast Delivery</div>
+    <h1>Discover your next favorite book.</h1>
+    <p>Curated collections, trusted reviews, and unbeatable prices.</p>
+    <div class="hero-actions">
+      <button class="btn primary" type="button">Shop Bestsellers</button>
+      <button class="btn outline" type="button">Browse Categories</button>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <h3>Today&#39;s Picks</h3>
+    <ul>
+      <li>Atomic Habits - James Clear</li>
+      <li>Ikigai - Hector Garcia</li>
+      <li>Rich Dad Poor Dad - R. Kiyosaki</li>
+      <li>Think and Grow Rich - N. Hill</li>
+    </ul>
+    <button class="btn small" type="button">View All</button>
+  </div>
+</section>
+
+<section class="section search-feedback" id="searchFeedback" hidden>
+  <div class="page-banner">
+    <div>
+      <div class="eyebrow">Search Results</div>
+      <h2 id="searchHeading">Showing all books</h2>
+      <p id="searchMeta">Browse the full catalog or search for a title, topic, or author-style keyword.</p>
+    </div>
+    <button id="clearSearchButton" class="btn ghost" type="button">Clear Search</button>
+  </div>
+</section>
+
+<nav class="subbar">
+  <div class="chips">
+    <a class="chip" href="category.html?name=JEE">JEE</a>
+    <a class="chip" href="category.html?name=NEET">NEET</a>
+    <a class="chip" href="category.html?name=UPSC">UPSC</a>
+    <a class="chip" href="category.html?name=NCERT%20CLASS%2011-12">NCERT CLASS 11-12</a>
+    <a class="chip" href="category.html?name=SSC">SSC</a>
+    <a class="chip" href="category.html?name=NDA">NDA</a>
+  </div>
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="product.html">New Arrivals</a>
+    <a href="product.html">Bestsellers</a>
+    <a href="product.html">Offers</a>
+    <a href="login.html">Help</a>
+  </div>
+</nav>
+
+<section class="section searchable-section" data-section-title="Featured Books">
+  <h2>Featured Books</h2>
+  <div class="products grid-4">
+    <div class="product-card searchable-product" data-name="Focus and Flow" data-category="Featured Books Self Help Productivity" data-price="299">
+      <img src="./images/img1.png" alt="Focus and Flow">
+      <h3>Focus and Flow</h3>
+      <p class="price">₹299</p>
+      <div class="card-actions">
+        <button onclick="addToCart('Focus and Flow',299,'book-focus-and-flow')">Add to Cart</button>
+        <button class="buy" onclick="buyNow('Focus and Flow',299,'book-focus-and-flow')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-card searchable-product" data-name="Mindset Shift" data-category="Featured Books Self Help Motivation" data-price="349">
+      <img src="images/img2.png" alt="Mindset Shift">
+      <h3>Mindset Shift</h3>
+      <p class="price">₹349</p>
+      <div class="card-actions">
+        <button onclick="addToCart('Mindset Shift',349,'book-mindset-shift')">Add to Cart</button>
+        <button class="buy" onclick="buyNow('Mindset Shift',349,'book-mindset-shift')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-card searchable-product" data-name="Daily Habits" data-category="Featured Books Self Help Habits" data-price="249">
+      <img src="images/img3.png" alt="Daily Habits">
+      <h3>Daily Habits</h3>
+      <p class="price">₹249</p>
+      <div class="card-actions">
+        <button onclick="addToCart('Daily Habits',249,'book-daily-habits')">Add to Cart</button>
+        <button class="buy" onclick="buyNow('Daily Habits',249,'book-daily-habits')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-card searchable-product" data-name="Deep Work" data-category="Featured Books Productivity Focus" data-price="399">
+      <img src="images/img4.png" alt="Deep Work">
+      <h3>Deep Work</h3>
+      <p class="price">₹399</p>
+      <div class="card-actions">
+        <button onclick="addToCart('Deep Work',399,'book-deep-work')">Add to Cart</button>
+        <button class="buy" onclick="buyNow('Deep Work',399,'book-deep-work')">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section searchable-section" data-section-title="New Arrivals">
+  <h2>New Arrivals</h2>
+  <div class="products grid-4">
+    <div class="product-card searchable-product" data-name="The Quiet Edge" data-category="New Arrivals Fiction Mindfulness" data-price="279">
+      <img src="images/img5.png" alt="The Quiet Edge">
+      <h3>The Quiet Edge</h3>
+      <p class="price">₹279</p>
+      <div class="card-actions">
+        <button onclick="addToCart('The Quiet Edge',279,'book-quiet-edge')">Add to Cart</button>
+        <button class="buy" onclick="buyNow('The Quiet Edge',279,'book-quiet-edge')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-card searchable-product" data-name="Start Small" data-category="New Arrivals Self Help Growth" data-price="319">
+      <img src="images/img6.png" alt="Start Small">
+      <h3>Start Small</h3>
+      <p class="price">₹319</p>
+      <div class="card-actions">
+        <button onclick="addToCart('Start Small',319,'book-start-small')">Add to Cart</button>
+        <button class="buy" onclick="buyNow('Start Small',319,'book-start-small')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-card searchable-product" data-name="Momentum" data-category="New Arrivals Motivation Success" data-price="359">
+      <img src="images/img7.png" alt="Momentum">
+      <h3>Momentum</h3>
+      <p class="price">₹359</p>
+      <div class="card-actions">
+        <button onclick="addToCart('Momentum',359,'book-momentum')">Add to Cart</button>
+        <button class="buy" onclick="buyNow('Momentum',359,'book-momentum')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="product-card searchable-product" data-name="Clear Path" data-category="New Arrivals Productivity Planning" data-price="299">
+      <img src="images/img1.png" alt="Clear Path">
+      <h3>Clear Path</h3>
+      <p class="price">₹299</p>
+      <div class="card-actions">
+        <button onclick="addToCart('Clear Path',299,'book-clear-path')">Add to Cart</button>
+        <button class="buy" onclick="buyNow('Clear Path',299,'book-clear-path')">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section production-preview">
+  <div class="production-card">
+    <div>
+      <div class="eyebrow">Production Console</div>
+      <h2>Production-grade Admin, Ready for Scale.</h2>
+      <p>Monitor releases, manage ops, and enable safety controls with a dedicated production hub.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="production.html">Open Production Page</a>
+        <a class="btn outline" href="admin/dashboard.html">View Admin Dashboard</a>
+      </div>
+    </div>
+    <div class="production-metrics">
+      <div class="metric-card">
+        <span class="metric-title">Release Health</span>
+        <span class="metric-value">98.6%</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-title">Risk Score</span>
+        <span class="metric-value">Low</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-title">Active Guards</span>
+        <span class="metric-value">12</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/api-client.js"></script>
+<script src="js/cart.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page">
+
+<nav class="page-switcher" aria-label="Quick page links">
+  <a href="index.html">Home</a>
+  <a href="product.html">Products</a>
+  <a href="product-detail.html">Product Detail</a>
+  <a href="cart.html">Cart</a>
+  <a href="checkout.html">Checkout</a>
+  <a href="login.html">Login</a>
+  <a href="production.html">Production</a>
+</nav>
+
+<section class="section cart-layout">
+  <div class="cart-panel interactive-card">
+    <div class="panel-header-row">
+      <div>
+        <div class="eyebrow">Ready To Order</div>
+        <h1>Your Cart</h1>
+      </div>
+      <a class="btn ghost" href="product.html">Add More Books</a>
+    </div>
+
+    <div id="cartItems" class="cart-items-list"></div>
+  </div>
+
+  <aside class="cart-summary interactive-card">
+    <h2>Order Snapshot</h2>
+    <h3 id="total">Total: ₹0</h3>
+    <a class="btn primary checkout-link" href="address.html">Checkout</a>
+  </aside>
+</section>
+
+<script src="js/api-client.js"></script>
+<script src="js/cart.js"></script>
+
+</body>
+</html>

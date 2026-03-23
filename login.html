@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page">
+
+<nav class="page-switcher" aria-label="Quick page links">
+  <a href="index.html">Home</a>
+  <a href="product.html">Products</a>
+  <a href="product-detail.html">Product Detail</a>
+  <a href="cart.html">Cart</a>
+  <a href="checkout.html">Checkout</a>
+  <a href="login.html">Login</a>
+  <a href="production.html">Production</a>
+</nav>
+
+<section class="section auth-wrap">
+  <div class="auth-panel interactive-card">
+    <div class="eyebrow">Welcome Back</div>
+    <h1>Login</h1>
+    <p class="auth-copy">Sign in to manage your cart, orders, and personalized reading picks.</p>
+
+    <p id="accountStatus" class="auth-copy">You are not signed in yet.</p>
+
+    <form id="loginForm" class="auth-form">
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="Enter your email">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" placeholder="Enter your password">
+
+      <div id="otpFieldWrap" hidden>
+        <label for="loginOtp">Email OTP</label>
+        <input id="loginOtp" name="loginOtp" type="text" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit OTP">
+      </div>
+
+      <button id="loginSubmitButton" class="btn primary" type="submit">Send OTP</button>
+      <button id="resendOtpButton" class="btn ghost" type="button" hidden>Resend OTP</button>
+    </form>
+
+    <p id="loginStatus" class="auth-copy"></p>
+    <p class="auth-copy">Password sahi hone ke baad hi OTP email par bheja jayega, aur OTP verify hone par hi login complete hoga.</p>
+    <button id="logoutButton" class="btn ghost" type="button" hidden>Logout</button>
+  </div>
+
+  <div class="auth-panel interactive-card">
+    <div class="eyebrow">New Here</div>
+    <h1>Create Account</h1>
+    <p class="auth-copy">Register once to save your address, cart, and future orders in the backend.</p>
+
+    <form id="registerForm" class="auth-form">
+      <label for="registerUsername">Username</label>
+      <input id="registerUsername" name="registerUsername" type="text" placeholder="Choose a username">
+
+      <label for="registerEmail">Email</label>
+      <input id="registerEmail" name="registerEmail" type="email" placeholder="Enter your email">
+
+      <label for="registerPhone">Phone Number</label>
+      <input id="registerPhone" name="registerPhone" type="tel" placeholder="Enter your phone number">
+
+      <label for="registerPassword">Password</label>
+      <input id="registerPassword" name="registerPassword" type="password" placeholder="Create a password">
+
+      <button class="btn primary" type="submit">Register</button>
+    </form>
+
+    <p id="registerStatus" class="auth-copy"></p>
+  </div>
+</section>
+
+<script src="js/api-client.js"></script>
+<script src="js/login.js"></script>
+
+</body>
+</html>

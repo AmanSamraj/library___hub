@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update Management</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin">
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        Library Hub Admin
+      </div>
+
+      <nav class="nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="order-management.html">Orders</a>
+        <a href="user-management.html">Users</a>
+        <a href="add-product.html">Catalog</a>
+        <a class="active" href="update-management.html">Updates <span class="pill">Release</span></a>
+      </nav>
+
+      <div class="panel">
+        <strong>Release Discipline</strong>
+        Staged rollout with real-time KPIs and rollback automation.
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="topbar">
+        <h1>Update Management</h1>
+        <div class="status">
+          Next Release: v2.8.1
+          <span class="badge">Staged</span>
+        </div>
+      </div>
+
+      <section class="grid-2">
+        <div class="card">
+          <h3>Release Timeline</h3>
+          <div class="timeline">
+            <div class="row">
+              <span>Canary 5%</span>
+              <span class="tag success">Healthy</span>
+            </div>
+            <div class="row">
+              <span>Stage 25%</span>
+              <span>In 2 hours</span>
+            </div>
+            <div class="row">
+              <span>Full Rollout</span>
+              <span>Tomorrow 10:00</span>
+            </div>
+          </div>
+          <div class="cta-row">
+            <button class="btn primary" type="button">Approve Stage</button>
+            <button class="btn ghost" type="button">Pause Rollout</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Production Grade Option</h3>
+          <div class="toggle">
+            <div>
+              <strong>Enable production-grade deployment</strong>
+              <div class="muted">Health gates, auto rollback, and KPI guardrails.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="timeline">
+            <div class="row">
+              <span>Crash Rate</span>
+              <span class="tag success">0.08%</span>
+            </div>
+            <div class="row">
+              <span>Latency Guard</span>
+              <span>p95 &lt; 320ms</span>
+            </div>
+            <div class="row">
+              <span>Rollback Point</span>
+              <span>Stable v2.7.9</span>
+            </div>
+          </div>
+          <div class="cta-row">
+            <button class="btn outline" type="button">View Diff</button>
+            <button class="btn primary" type="button">Trigger Rollback</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Product</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin">
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        Library Hub Admin
+      </div>
+
+      <nav class="nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="order-management.html">Orders</a>
+        <a href="user-management.html">Users</a>
+        <a class="active" href="add-product.html">Catalog <span class="pill">New</span></a>
+        <a href="update-management.html">Updates</a>
+      </nav>
+
+      <div class="panel">
+        <strong>Catalog Standards</strong>
+        All product entries follow metadata validation and production-grade publishing.
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="topbar">
+        <h1>Add Product</h1>
+        <div class="status">
+          Publishing: Catalog v4
+          <span class="badge">Ready</span>
+        </div>
+      </div>
+
+      <section class="grid-2">
+        <div class="card">
+          <h3>Book Details</h3>
+          <div class="form-grid">
+            <div class="field">
+              <label>Title</label>
+              <input type="text" placeholder="The Creative Habit">
+            </div>
+            <div class="field">
+              <label>Author</label>
+              <input type="text" placeholder="Twyla Tharp">
+            </div>
+            <div class="field">
+              <label>ISBN</label>
+              <input type="text" placeholder="978-0735210172">
+            </div>
+            <div class="field">
+              <label>Category</label>
+              <select>
+                <option>Self Help</option>
+                <option>Fiction</option>
+                <option>Non-Fiction</option>
+                <option>Kids</option>
+              </select>
+            </div>
+          </div>
+          <div class="field" style="margin-top: 16px;">
+            <label>Description</label>
+            <textarea placeholder="Short synopsis and key highlights."></textarea>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Production Grade Option</h3>
+          <div class="toggle">
+            <div>
+              <strong>Publish with production-grade checks</strong>
+              <div class="muted">Auto price validation, metadata audit, and risk scoring.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="timeline">
+            <div class="row">
+              <span>Quality Gate</span>
+              <span class="tag success">Pass</span>
+            </div>
+            <div class="row">
+              <span>Image Compliance</span>
+              <span class="tag warning">1 flag</span>
+            </div>
+            <div class="row">
+              <span>Localization</span>
+              <span>Hindi + English</span>
+            </div>
+          </div>
+          <div class="cta-row">
+            <button class="btn primary" type="button">Save Draft</button>
+            <button class="btn outline" type="button">Publish</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

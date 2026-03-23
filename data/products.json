@@ -1,0 +1,101 @@
+[
+  {
+    "id": "book-focus-and-flow",
+    "name": "Focus and Flow",
+    "price": 299,
+    "category": "Featured Books",
+    "badge": "Featured",
+    "description": "Build strong study habits and deep concentration with practical routines that stick.",
+    "image": "images/img1.png",
+    "inventory": 32,
+    "rating": 4.6
+  },
+  {
+    "id": "book-mindset-shift",
+    "name": "Mindset Shift",
+    "price": 349,
+    "category": "Featured Books",
+    "badge": "Popular",
+    "description": "A motivational guide for better decisions, resilient thinking, and sustained growth.",
+    "image": "images/img2.png",
+    "inventory": 28,
+    "rating": 4.5
+  },
+  {
+    "id": "book-daily-habits",
+    "name": "Daily Habits",
+    "price": 249,
+    "category": "Featured Books",
+    "badge": "Reader Pick",
+    "description": "Small systems, daily consistency, and a straightforward path to long-term change.",
+    "image": "images/img3.png",
+    "inventory": 41,
+    "rating": 4.3
+  },
+  {
+    "id": "book-deep-work",
+    "name": "Deep Work",
+    "price": 399,
+    "category": "Featured Books",
+    "badge": "Bestseller",
+    "description": "Sharpen focus, reduce distraction, and create a better environment for high-value work.",
+    "image": "images/img4.png",
+    "inventory": 19,
+    "rating": 4.8
+  },
+  {
+    "id": "book-quiet-edge",
+    "name": "The Quiet Edge",
+    "price": 279,
+    "category": "New Arrivals",
+    "badge": "New",
+    "description": "A calm, reflective read about balancing ambition with clarity and mental space.",
+    "image": "images/img5.png",
+    "inventory": 24,
+    "rating": 4.1
+  },
+  {
+    "id": "book-start-small",
+    "name": "Start Small",
+    "price": 319,
+    "category": "New Arrivals",
+    "badge": "New",
+    "description": "Actionable strategies to begin before you feel ready and keep momentum alive.",
+    "image": "images/img6.png",
+    "inventory": 26,
+    "rating": 4.4
+  },
+  {
+    "id": "book-momentum",
+    "name": "Momentum",
+    "price": 359,
+    "category": "New Arrivals",
+    "badge": "Trending",
+    "description": "A practical playbook for consistency, confidence, and compounding progress.",
+    "image": "images/img7.png",
+    "inventory": 21,
+    "rating": 4.2
+  },
+  {
+    "id": "book-clear-path",
+    "name": "Clear Path",
+    "price": 299,
+    "category": "New Arrivals",
+    "badge": "Fresh Pick",
+    "description": "Plan with intention, simplify priorities, and make steady progress every week.",
+    "image": "images/img1.png",
+    "inventory": 34,
+    "rating": 4.0
+  },
+  {
+    "id": "book-atomic-habits",
+    "name": "Atomic Habits",
+    "price": 499,
+    "category": "Bestsellers",
+    "badge": "Classic",
+    "description": "A bestselling framework for habit formation, identity change, and repeatable growth.",
+    "image": "images/img1.png",
+    "inventory": 17,
+    "rating": 4.9
+  }
+]

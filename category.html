@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Category | Library Hub</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page">
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-logo">Library Hub</div>
+    <div class="brand-text">
+      <div class="brand-name">Category Picks</div>
+      <div class="brand-sub">exam and study collections</div>
+    </div>
+  </div>
+
+  <div class="deliver">
+    <div class="deliver-label">Deliver to</div>
+    <div class="deliver-value">India</div>
+  </div>
+
+  <div class="actions">
+    <a class="btn ghost" href="index.html">Back Home</a>
+    <a class="btn ghost cart" href="cart.html">Cart</a>
+  </div>
+</header>
+
+<nav class="page-switcher" aria-label="Quick page links">
+  <a href="index.html">Home</a>
+  <a href="product.html">Products</a>
+  <a href="product-detail.html">Product Detail</a>
+  <a href="cart.html">Cart</a>
+  <a href="checkout.html">Checkout</a>
+  <a href="login.html">Login</a>
+  <a href="production.html">Production</a>
+</nav>
+
+<nav class="subbar">
+  <div id="dynamicCategoryChips" class="chips"></div>
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="product.html">New Arrivals</a>
+    <a href="product.html">Bestsellers</a>
+    <a href="product.html">Offers</a>
+    <a href="login.html">Help</a>
+  </div>
+</nav>
+
+<section class="section page-intro">
+  <div class="page-banner">
+    <div>
+      <div class="eyebrow">Category Collection</div>
+      <h1 id="categoryTitle">Category Products</h1>
+      <p id="categoryDescription">Explore books and guides specially selected for this category.</p>
+    </div>
+    <div class="banner-badge" id="categoryBadge">Study Picks</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 id="categoryHeading">Related Products</h2>
+  <div id="categoryProducts" class="products grid-4"></div>
+  <div id="categoryEmpty" class="empty-state" hidden>
+    <h3>No products found</h3>
+    <p>Try another chip from the category bar to view a different collection.</p>
+  </div>
+</section>
+
+<script src="js/api-client.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/category.js"></script>
+
+</body>
+</html>

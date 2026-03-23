@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Management</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin">
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        Library Hub Admin
+      </div>
+
+      <nav class="nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a class="active" href="order-management.html">Orders <span class="pill">Hot</span></a>
+        <a href="user-management.html">Users</a>
+        <a href="add-product.html">Catalog</a>
+        <a href="update-management.html">Updates</a>
+      </nav>
+
+      <div class="panel">
+        <strong>Production Fulfillment</strong>
+        SLA-driven routing with automatic exception handling.
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="topbar">
+        <h1>Order Management</h1>
+        <div class="status">
+          Queue: 184 orders
+          <span class="badge">On Track</span>
+        </div>
+      </div>
+
+      <section class="grid-2">
+        <div class="card">
+          <h3>Order Pipeline</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Stage</th>
+                <th>ETA</th>
+                <th>Owner</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#LH-9051</td>
+                <td><span class="tag success">Dispatch</span></td>
+                <td>4 hrs</td>
+                <td>North Hub</td>
+              </tr>
+              <tr>
+                <td>#LH-9047</td>
+                <td><span class="tag warning">Review</span></td>
+                <td>12 hrs</td>
+                <td>Risk Desk</td>
+              </tr>
+              <tr>
+                <td>#LH-9043</td>
+                <td><span class="tag neutral">Picking</span></td>
+                <td>6 hrs</td>
+                <td>West Hub</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Production Grade Option</h3>
+          <div class="toggle">
+            <div>
+              <strong>Enable production-grade routing</strong>
+              <div class="muted">Auto re-route, fraud checks, and SLA alerts.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="timeline">
+            <div class="row">
+              <span>Fraud Shield</span>
+              <span class="tag success">Active</span>
+            </div>
+            <div class="row">
+              <span>Courier Health</span>
+              <span>92%</span>
+            </div>
+            <div class="row">
+              <span>Escalations</span>
+              <span>3 open</span>
+            </div>
+          </div>
+          <div class="cta-row">
+            <button class="btn primary" type="button">Rebalance Queue</button>
+            <button class="btn ghost" type="button">View Exceptions</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

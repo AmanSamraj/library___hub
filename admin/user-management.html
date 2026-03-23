@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Management</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin">
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        Library Hub Admin
+      </div>
+
+      <nav class="nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="order-management.html">Orders</a>
+        <a class="active" href="user-management.html">Users <span class="pill">VIP</span></a>
+        <a href="add-product.html">Catalog</a>
+        <a href="update-management.html">Updates</a>
+      </nav>
+
+      <div class="panel">
+        <strong>Security Baseline</strong>
+        MFA, IP allow-list, and activity logging are enforced.
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="topbar">
+        <h1>User Management</h1>
+        <div class="status">
+          Admin Roles: 6
+          <span class="badge">Compliant</span>
+        </div>
+      </div>
+
+      <section class="grid-2">
+        <div class="card">
+          <h3>Admin Directory</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th>Access</th>
+                <th>Last Active</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Meera Kulkarni</td>
+                <td>Catalog Lead</td>
+                <td><span class="tag success">MFA</span></td>
+                <td>12 min ago</td>
+              </tr>
+              <tr>
+                <td>Rahul Iyer</td>
+                <td>Ops Manager</td>
+                <td><span class="tag warning">Review</span></td>
+                <td>38 min ago</td>
+              </tr>
+              <tr>
+                <td>Priya Nair</td>
+                <td>Support</td>
+                <td><span class="tag neutral">Limited</span></td>
+                <td>2 hrs ago</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Production Grade Option</h3>
+          <div class="toggle">
+            <div>
+              <strong>Enable production-grade access policies</strong>
+              <div class="muted">RBAC guardrails, session expiry, and approval routing.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="timeline">
+            <div class="row">
+              <span>Privileged Accounts</span>
+              <span>4</span>
+            </div>
+            <div class="row">
+              <span>Security Alerts</span>
+              <span class="tag success">0 active</span>
+            </div>
+            <div class="row">
+              <span>Audit Export</span>
+              <span>Daily at 23:30</span>
+            </div>
+          </div>
+          <div class="cta-row">
+            <button class="btn primary" type="button">Review Access</button>
+            <button class="btn ghost" type="button">Download Logs</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

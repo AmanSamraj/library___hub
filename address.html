@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Address | Library Hub</title>
+<link rel="stylesheet" href="css/checkout.css">
+</head>
+<body data-checkout-step="address">
+  <header class="checkout-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">Library Hub</a>
+      <div class="search-bar">
+        <input type="text" placeholder="Search for books, authors and more">
+      </div>
+      <div class="header-actions">
+        <span class="header-user">Aman</span>
+        <a href="cart.html">Cart</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="page-switcher" aria-label="Quick page links">
+    <a href="index.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="product-detail.html">Product Detail</a>
+    <a href="cart.html">Cart</a>
+    <a href="address.html">Checkout</a>
+    <a href="login.html">Login</a>
+    <a href="production.html">Production</a>
+  </nav>
+
+  <main class="checkout-page">
+    <section class="checkout-content">
+      <div class="checkout-steps">
+        <a class="step active" href="address.html">
+          <span class="step-count">1</span>
+          <span>Address</span>
+        </a>
+        <a class="step" href="order.html">
+          <span class="step-count">2</span>
+          <span>Order Summary</span>
+        </a>
+        <a class="step" href="payment.html">
+          <span class="step-count">3</span>
+          <span>Payment</span>
+        </a>
+      </div>
+
+      <section class="panel customer-panel">
+        <div class="panel-head">
+          <h2>Select Delivery Address</h2>
+          <span class="reference-note">Reference: Flipkart/Amazon style address-first checkout</span>
+        </div>
+        <form id="addressForm" class="customer-form stacked-form">
+          <input id="fullName" name="fullName" type="text" placeholder="Full Name" required>
+          <input id="phone" name="phone" type="tel" placeholder="Phone Number" required>
+          <input id="addressLineInput" name="addressLine" type="text" placeholder="Full Address" required>
+          <button class="place-order-btn" type="submit">Use This Address</button>
+        </form>
+      </section>
+
+      <section class="panel address-panel">
+        <div class="panel-head">
+          <h2>Saved Address</h2>
+          <button class="link-btn" data-checkout-next-order type="button">Continue to Order</button>
+        </div>
+        <div class="address-name"><span data-address-field="name">Aman Kumar</span> <span class="tag" data-address-field="label">HOME</span></div>
+        <p class="address-line" data-address-field="line">Varma asthan, Chandhari Kharijjama, Islampur, Nalanda 801303</p>
+        <p class="address-line" data-address-field="phone">6205366735</p>
+      </section>
+
+      <section class="panel assurance-panel">
+        <div class="assurance-title">Fast delivery and secure handoff</div>
+        <p>Choose your shipping details first, then review order and payment in the next steps just like major marketplace flows.</p>
+      </section>
+    </section>
+
+    <aside class="summary-sidebar">
+      <section class="panel membership-panel">
+        <div class="membership-top">
+          <div class="membership-badge">LH<br>PLUS</div>
+          <div>
+            <h3>Step 1 of 3</h3>
+            <p>Confirm address before reviewing your order summary and payment options.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel price-panel">
+        <h3>Price Details</h3>
+        <div class="price-detail-row">
+          <span>MRP</span>
+          <span id="summaryMrp">₹0</span>
+        </div>
+        <div class="price-detail-row">
+          <span>Fees</span>
+          <span id="summaryFee">₹9</span>
+        </div>
+        <div class="price-detail-row discount-row">
+          <span>Discount</span>
+          <span id="summaryDiscount">-₹0</span>
+        </div>
+        <div class="price-detail-row total-row">
+          <span>Total Amount</span>
+          <span id="summaryTotal">₹0</span>
+        </div>
+        <div class="savings-box" id="summarySavings">You'll save ₹0 on this order</div>
+      </section>
+
+      <section class="sticky-footer panel">
+        <div>
+          <div class="sticky-old-price" id="footerMrp">₹0</div>
+          <div class="sticky-price" id="footerTotal">₹0</div>
+        </div>
+        <button data-checkout-next-order type="button">Continue</button>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="checkout-footer">
+    <div class="footer-inner">
+      <div><h4>About</h4><p>Contact Us</p><p>About Us</p><p>Careers</p></div>
+      <div><h4>Help</h4><p>Payments</p><p>Shipping</p><p>Cancellation & Returns</p></div>
+      <div><h4>Policy</h4><p>Terms Of Use</p><p>Security</p><p>Privacy</p></div>
+      <div><h4>Mail Us</h4><p>Library Hub Private Limited</p><p>Books Street, Nalanda</p><p>India</p></div>
+    </div>
+  </footer>
+
+  <script src="js/api-client.js"></script>
+  <script src="js/checkout-flow.js"></script>
+</body>
+</html>

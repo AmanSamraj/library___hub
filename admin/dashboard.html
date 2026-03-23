@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin">
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        Library Hub Admin
+      </div>
+
+      <nav class="nav">
+        <a class="active" href="dashboard.html">Dashboard <span class="pill">Live</span></a>
+        <a href="order-management.html">Orders</a>
+        <a href="user-management.html">Users</a>
+        <a href="add-product.html">Catalog</a>
+        <a href="update-management.html">Updates</a>
+      </nav>
+
+      <div class="panel">
+        <strong>Production Grade Mode</strong>
+        Real-time monitoring, role-based approvals, and rollback protection enabled for every release.
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="topbar">
+        <h1>Command Center</h1>
+        <div class="status">
+          Environment: India Central
+          <span class="badge">Operational</span>
+        </div>
+      </div>
+
+      <section class="grid-3">
+        <div class="card">
+          <h3>Today&#39;s Revenue</h3>
+          <div class="metric">₹3,42,980</div>
+          <div class="muted">+18% vs last Friday</div>
+        </div>
+        <div class="card">
+          <h3>Fulfillment SLA</h3>
+          <div class="metric">97.4%</div>
+          <div class="muted">20 orders at risk</div>
+        </div>
+        <div class="card">
+          <h3>Active Admins</h3>
+          <div class="metric">12</div>
+          <div class="muted">2 elevated approvals pending</div>
+        </div>
+      </section>
+
+      <section class="grid-2">
+        <div class="card">
+          <h3>Recent Orders</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#LH-9042</td>
+                <td>Ritika Sharma</td>
+                <td><span class="tag success">Packed</span></td>
+                <td>₹1,299</td>
+              </tr>
+              <tr>
+                <td>#LH-9041</td>
+                <td>Arjun Nair</td>
+                <td><span class="tag warning">Verify</span></td>
+                <td>₹799</td>
+              </tr>
+              <tr>
+                <td>#LH-9039</td>
+                <td>Kavya Joshi</td>
+                <td><span class="tag neutral">Queued</span></td>
+                <td>₹2,149</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Production Grade Controls</h3>
+          <div class="toggle">
+            <div>
+              <strong>Production-grade rollout</strong>
+              <div class="muted">Auto health checks, staged releases, and audit logs.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="timeline">
+            <div class="row">
+              <span>Risk Score</span>
+              <span class="tag success">Low</span>
+            </div>
+            <div class="row">
+              <span>Rollback Window</span>
+              <span>24 hours</span>
+            </div>
+            <div class="row">
+              <span>Approvals</span>
+              <span>2 of 2 complete</span>
+            </div>
+          </div>
+          <div class="cta-row">
+            <button class="btn primary" type="button">Launch Release</button>
+            <button class="btn ghost" type="button">View Audit</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-banner" style="margin-top: 24px;">
+        <div>
+          <strong>Prototype ready for production-grade admin ops.</strong>
+          <div class="muted">Connect to live services, alerting, and role policies when backend is ready.</div>
+        </div>
+        <button class="btn outline" type="button">Export Config</button>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
