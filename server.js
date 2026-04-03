@@ -13,11 +13,11 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "pages")));
+app.use(express.static(path.join(__dirname, "html")));
 app.use(express.static(__dirname));
 
 app.get("/", (req, res) => {
-  res.redirect("/index.html");
+  res.redirect("/html/index.html");
 });
 
 app.use("/api", apiRoutes);
