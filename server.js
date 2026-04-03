@@ -13,6 +13,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "pages")));
 app.use(express.static(__dirname));
 
 app.get("/", (req, res) => {
