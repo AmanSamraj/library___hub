@@ -3,8 +3,26 @@ const path = require("path");
 const { createId } = require("../utils/id.util");
 
 const usersFilePath = path.join(__dirname, "..", "data", "users.json");
+const useMemoryStore = process.env.VERCEL === "1";
+let memoryUsers = null;
 
 async function readUsers() {
+  if (useMemoryStore) {
+    if (memoryUsers) {
+      return memoryUsers;
+    }
+
+    try {
+      const file = await fs.readFile(usersFilePath, "utf8");
+      const data = JSON.parse(file);
+      memoryUsers = Array.isArray(data) ? data : [];
+    } catch (error) {
+      memoryUsers = [];
+    }
+
+    return memoryUsers;
+  }
+
   try {
     const file = await fs.readFile(usersFilePath, "utf8");
     const data = JSON.parse(file);
@@ -19,6 +37,11 @@ async function readUsers() {
 }
 
 async function writeUsers(users) {
+  if (useMemoryStore) {
+    memoryUsers = users;
+    return;
+  }
+
   await fs.writeFile(usersFilePath, JSON.stringify(users, null, 2) + "\n", "utf8");
 }
 

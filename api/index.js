@@ -13,12 +13,21 @@ function ensureDatabase() {
   return databaseInitPromise;
 }
 
+ensureDatabase();
+
 module.exports = async function handler(req, res) {
-  await ensureDatabase();
+  ensureDatabase();
 
-  if (req.url && !req.url.startsWith("/api")) {
-    req.url = "/api" + req.url;
+  try {
+    return app(req, res);
+  } catch (error) {
+    console.error("API handler crashed:", error);
+
+    if (!res.headersSent) {
+      return res.status(500).json({
+        message: "Server error",
+        error: error.message
+      });
+    }
   }
-
-  return app(req, res);
 };
