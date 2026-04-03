@@ -5,12 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {
   var registerStatus = document.getElementById("registerStatus");
   var accountStatus = document.getElementById("accountStatus");
   var logoutButton = document.getElementById("logoutButton");
-  var otpFieldWrap = document.getElementById("otpFieldWrap");
-  var otpInput = document.getElementById("loginOtp");
-  var resendOtpButton = document.getElementById("resendOtpButton");
-  var loginSubmitButton = document.getElementById("loginSubmitButton");
-  var pendingLoginIdentity = "";
-  var otpStepActive = false;
+  var loginPanel = document.getElementById("loginPanel");
+  var registerPanel = document.getElementById("registerPanel");
+  var showLoginButton = document.getElementById("showLoginButton");
+  var showRegisterButton = document.getElementById("showRegisterButton");
 
   function setMessage(node, message, isError) {
     if (!node) {
@@ -38,57 +36,49 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  function setOtpStep(active) {
-    otpStepActive = active;
+  function showMode(mode) {
+    var showLogin = mode !== "register";
 
-    if (otpFieldWrap) {
-      otpFieldWrap.hidden = !active;
+    if (loginPanel) {
+      loginPanel.hidden = !showLogin;
     }
 
-    if (otpInput) {
-      otpInput.required = active;
-      if (!active) {
-        otpInput.value = "";
-      }
+    if (registerPanel) {
+      registerPanel.hidden = showLogin;
     }
 
-    if (resendOtpButton) {
-      resendOtpButton.hidden = !active;
+    if (showLoginButton) {
+      showLoginButton.classList.toggle("active", showLogin);
     }
 
-    if (loginSubmitButton) {
-      loginSubmitButton.textContent = active ? "Verify OTP & Login" : "Send OTP";
+    if (showRegisterButton) {
+      showRegisterButton.classList.toggle("active", !showLogin);
     }
   }
 
-  async function requestLoginOtp() {
-    var emailOrUsername = loginForm.email.value.trim();
-    var password = loginForm.password.value.trim();
+  async function loadBackendStatus() {
+    try {
+      var health = await window.LibraryHubApi.request("/health", {
+        method: "GET"
+      });
 
-    if (!emailOrUsername || !password) {
-      throw new Error("Email and password are required");
+      if (health.database !== "connected") {
+        var message = "Database disconnected hai. Login, register, cart aur checkout tab tak kaam nahi karenge jab tak MongoDB connect na ho.";
+        setMessage(loginStatus, message, true);
+        setMessage(registerStatus, message, true);
+      }
+    } catch (error) {
+      console.warn("Health check failed:", error && error.message ? error.message : error);
     }
-
-    var response = await window.LibraryHubApi.request("/auth/login", {
-      method: "POST",
-      body: JSON.stringify({
-        emailOrUsername: emailOrUsername,
-        password: password
-      })
-    });
-
-    pendingLoginIdentity = emailOrUsername;
-    setOtpStep(true);
-    setMessage(loginStatus, "OTP sent to " + (response.maskedEmail || response.email) + ". Enter it below to finish login.", false);
   }
 
   if (registerForm) {
     registerForm.addEventListener("submit", async function(event) {
       event.preventDefault();
-      setMessage(registerStatus, "Creating your account...", false);
 
       try {
-        await window.LibraryHubApi.request("/auth/register", {
+        setMessage(registerStatus, "Sending OTP...", false);
+        var response = await window.LibraryHubApi.request("/auth/register", {
           method: "POST",
           body: JSON.stringify({
             username: registerForm.registerUsername.value.trim(),
@@ -98,8 +88,13 @@ document.addEventListener("DOMContentLoaded", function() {
           })
         });
 
-        setMessage(registerStatus, "Account created. You can log in now.", false);
-        registerForm.reset();
+        window.sessionStorage.setItem("libraryHubPendingRegisterEmail", registerForm.registerEmail.value.trim());
+        if (response.delivery === "console") {
+          window.sessionStorage.setItem("libraryHubOtpDelivery", "console");
+        } else {
+          window.sessionStorage.removeItem("libraryHubOtpDelivery");
+        }
+        window.location.href = "register-otp.html?email=" + encodeURIComponent(response.email || registerForm.registerEmail.value.trim());
       } catch (error) {
         setMessage(registerStatus, error.message, true);
       }
@@ -111,24 +106,16 @@ document.addEventListener("DOMContentLoaded", function() {
       event.preventDefault();
 
       try {
-        if (!otpStepActive) {
-          setMessage(loginStatus, "Checking password and sending OTP...", false);
-          await requestLoginOtp();
-          return;
-        }
-
-        setMessage(loginStatus, "Verifying OTP...", false);
-        var session = await window.LibraryHubApi.request("/auth/login/verify-otp", {
+        setMessage(loginStatus, "Logging in...", false);
+        var session = await window.LibraryHubApi.request("/auth/login", {
           method: "POST",
           body: JSON.stringify({
-            emailOrUsername: pendingLoginIdentity || loginForm.email.value.trim(),
-            otp: otpInput ? otpInput.value.trim() : ""
+            emailOrUsername: loginForm.email.value.trim(),
+            password: loginForm.password.value.trim()
           })
         });
 
         window.LibraryHubApi.saveSession(session);
-        pendingLoginIdentity = "";
-        setOtpStep(false);
         loginForm.reset();
         updateAccountStatus();
         setMessage(loginStatus, "Login successful. Redirecting to home...", false);
@@ -141,32 +128,27 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  if (resendOtpButton) {
-    resendOtpButton.addEventListener("click", async function() {
-      if (!loginForm) {
-        return;
-      }
-
-      setMessage(loginStatus, "Sending a fresh OTP...", false);
-
-      try {
-        await requestLoginOtp();
-      } catch (error) {
-        setMessage(loginStatus, error.message, true);
-      }
-    });
-  }
-
   if (logoutButton) {
     logoutButton.addEventListener("click", function() {
       window.LibraryHubApi.clearSession();
-      pendingLoginIdentity = "";
-      setOtpStep(false);
       updateAccountStatus();
       setMessage(loginStatus, "You have been logged out.", false);
     });
   }
 
-  setOtpStep(false);
+  if (showLoginButton) {
+    showLoginButton.addEventListener("click", function() {
+      showMode("login");
+    });
+  }
+
+  if (showRegisterButton) {
+    showRegisterButton.addEventListener("click", function() {
+      showMode("register");
+    });
+  }
+
   updateAccountStatus();
+  showMode("login");
+  loadBackendStatus();
 });

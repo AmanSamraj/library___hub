@@ -8,11 +8,11 @@ const healthRoutes = require("./health.routes");
 
 const router = express.Router();
 
-router.use(authRoutes);
+router.use("/auth", authRoutes);
 router.use(catalogRoutes);
-router.use(cartRoutes);
-router.use(checkoutRoutes);
-router.use(orderRoutes);
+router.use("/cart", cartRoutes);
+router.use("/checkout", checkoutRoutes);
+router.use("/orders", orderRoutes);
 router.use(healthRoutes);
 
 module.exports = router;

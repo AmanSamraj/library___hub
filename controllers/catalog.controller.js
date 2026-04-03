@@ -1,4 +1,4 @@
-const { listCategories, listProducts, getProductById } = require("../services/catalog.service");
+const { listCategories, listProducts, getProductById, createProduct } = require("../services/catalog.service");
 
 async function getCategories(req, res) {
   const response = await listCategories();
@@ -19,8 +19,24 @@ async function getProduct(req, res) {
   }
 }
 
+async function addProduct(req, res) {
+  try {
+    const response = await createProduct(req.body);
+    res.status(201).json(response);
+  } catch (error) {
+    const statusCode = /already exists/i.test(error.message)
+      ? 409
+      : /MongoDB is not connected/i.test(error.message)
+        ? 503
+        : 400;
+
+    res.status(statusCode).json({ message: error.message });
+  }
+}
+
 module.exports = {
   getCategories,
   getProducts,
-  getProduct
+  getProduct,
+  addProduct
 };

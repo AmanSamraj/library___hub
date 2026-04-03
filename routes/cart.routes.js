@@ -13,10 +13,10 @@ const router = express.Router();
 
 router.use(requireDatabase, authenticate);
 
-router.get("/cart", getCart);
-router.post("/cart/items", addCartItem);
-router.patch("/cart/items/:itemKey", updateCartItem);
-router.delete("/cart/items/:itemKey", deleteCartItem);
-router.delete("/cart", clearCart);
+router.get("/", getCart);
+router.post("/items", addCartItem);
+router.patch("/items/:itemKey", updateCartItem);
+router.delete("/items/:itemKey", deleteCartItem);
+router.delete("/", clearCart);
 
 module.exports = router;

@@ -1,5 +1,15 @@
 (function() {
-  const API_BASE = "/api";
+  const API_BASE = (function() {
+    var host = window.location.hostname || "localhost";
+    var protocol = window.location.protocol || "http:";
+    var port = window.location.port || "";
+
+    if ((host === "127.0.0.1" || host === "localhost") && port && port !== "3000") {
+      return protocol + "//" + host + ":3000/api";
+    }
+
+    return "/api";
+  })();
   const TOKEN_KEY = "libraryHubToken";
   const USER_KEY = "libraryHubUser";
   const LEGACY_TOKEN_KEY = "token";
@@ -17,12 +27,31 @@
       headers.Authorization = "Bearer " + token;
     }
 
-    const response = await fetch(API_BASE + path, Object.assign({}, options, { headers }));
+    let response;
+
+    try {
+      response = await fetch(API_BASE + path, Object.assign({}, options, { headers }));
+    } catch (error) {
+      throw new Error("Backend request failed. Server restart karke page hard refresh karo.");
+    }
+
     const data = await response.json().catch(function() {
       return {};
     });
 
     if (!response.ok) {
+      if (
+        response.status === 401 &&
+        data &&
+        (
+          data.message === "Authentication required" ||
+          data.message === "Invalid or expired token" ||
+          data.message === "User account not found"
+        )
+      ) {
+        clearSession();
+      }
+
       const message = data && data.message ? data.message : "Request failed";
       throw new Error(message);
     }

@@ -1,13 +1,12 @@
 const express = require("express");
-const { register, login, verifyOtp, me } = require("../controllers/auth.controller");
-const { requireDatabase } = require("../middlewares/database.middleware");
+const { register, login, verifyRegisterOtp, me } = require("../controllers/auth.controller");
 const { authenticate } = require("../middlewares/auth.middleware");
 
 const router = express.Router();
 
-router.post("/register", requireDatabase, register);
-router.post("/login", requireDatabase, login);
-router.post("/login/verify-otp", requireDatabase, verifyOtp);
-router.get("/me", requireDatabase, authenticate, me);
+router.post("/register", register);
+router.post("/register/verify-otp", verifyRegisterOtp);
+router.post("/login", login);
+router.get("/me", authenticate, me);
 
 module.exports = router;

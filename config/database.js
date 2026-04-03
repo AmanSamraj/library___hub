@@ -9,6 +9,7 @@ async function connectDatabase() {
   }
 
   await mongoose.connect(MONGODB_URI);
+  console.log("MongoDB connected successfully in datbase.js");
   const { seedProducts } = require("../services/catalog.service");
   await seedProducts();
   databaseReady = true;

@@ -1,6 +1,6 @@
 function sanitizeUser(user) {
   return {
-    id: String(user._id),
+    id: String(user._id || user.id),
     username: user.username,
     email: user.email,
     phone: user.phone || "",

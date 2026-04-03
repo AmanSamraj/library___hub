@@ -8,6 +8,10 @@ const { connectDatabase } = require("./config/database");
 const app = express();
 
 app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader("Cache-Control", "no-store");
+  next();
+});
 app.use(express.json());
 app.use(express.static(__dirname));
 
@@ -31,7 +35,10 @@ function startServerWithFallback() {
 
 if (require.main === module) {
   connectDatabase()
-    .then(startServer)
+    .then(() => {
+      console.log("MongoDB connected successfully in server.js");
+      startServer();
+    })
     .catch((error) => {
       console.error("MongoDB connection failed:", error.message);
       startServerWithFallback();

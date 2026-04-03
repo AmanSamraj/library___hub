@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.use(requireDatabase, authenticate);
 
-router.get("/checkout/address", getAddress);
-router.post("/checkout/address", saveAddress);
+router.get("/address", getAddress);
+router.post("/address", saveAddress);
 
 module.exports = router;

@@ -79,12 +79,11 @@
 
 <nav class="subbar">
   <div class="chips">
-    <a class="chip" href="category.html?name=JEE">JEE</a>
-    <a class="chip" href="category.html?name=NEET">NEET</a>
-    <a class="chip" href="category.html?name=UPSC">UPSC</a>
-    <a class="chip" href="category.html?name=NCERT%20CLASS%2011-12">NCERT CLASS 11-12</a>
-    <a class="chip" href="category.html?name=SSC">SSC</a>
-    <a class="chip" href="category.html?name=NDA">NDA</a>
+    <a class="chip category-chip" href="category.html?name=JEE" data-category="JEE">JEE</a>
+    <a class="chip category-chip" href="category.html?name=NEET" data-category="NEET">NEET</a>
+    <a class="chip category-chip" href="category.html?name=UPSC" data-category="UPSC">UPSC</a>
+    <a class="chip category-chip" href="category.html?name=NCERT%20CLASS%2011-12" data-category="NCERT CLASS 11-12">NCERT CLASS 11-12</a>
+    <a class="chip category-chip" href="category.html?name=NDA" data-category="NDA">NDA</a>
   </div>
   <div class="menu">
     <a href="index.html">Home</a>
@@ -94,6 +93,18 @@
     <a href="login.html">Help</a>
   </div>
 </nav>
+
+<section class="section searchable-section" id="subbarCategorySection" data-section-title="Category Products">
+  <div class="section-header">
+    <div>
+      <div class="eyebrow">Category Products</div>
+      <h2 id="categoryProductsTitle">JEE Products</h2>
+      <p class="section-subtitle" id="categoryProductsMeta">Subbar ke naam ke anusar yahan matching products dikh rahe hain.</p>
+    </div>
+    <a class="btn ghost" id="categoryProductsLink" href="category.html?name=JEE">Open Full Category</a>
+  </div>
+  <div id="categoryProductsGrid" class="products grid-4"></div>
+</section>
 
 <section class="section searchable-section" data-section-title="Featured Books">
   <h2>Featured Books</h2>

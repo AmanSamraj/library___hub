@@ -1,0 +1,55 @@
+Gmail SMTP Configuration Samajhne Ke Liye
+
+Ye settings OTP email bhejne ke liye use hoti hain.
+
+1. SMTP_HOST=smtp.gmail.com
+Iska matlab Gmail ka mail server use hoga.
+SMTP_HOST hamesha Gmail ke liye smtp.gmail.com rahega.
+
+2. SMTP_PORT=587
+Ye Gmail SMTP ka port number hai.
+587 generally TLS/starttls ke saath use hota hai.
+
+3. SMTP_SECURE=false
+Port 587 ke saath secure false hota hai.
+Agar port 465 use karte, tab secure true hota.
+
+4. SMTP_USER=yourgmail@gmail.com
+Yahan apna asli Gmail address likhna hota hai.
+Example:
+SMTP_USER=amansamraj7@gmail.com
+
+5. SMTP_PASS=your_app_password
+Yahan normal Gmail password nahi likhna.
+Yahan Gmail App Password likhna hota hai.
+App Password banane ke liye:
+- Google account me 2-Step Verification on karo
+- phir App Password generate karo
+- jo 16-character password mile, use yahan daalo
+
+Example:
+SMTP_PASS=abcd efgh ijkl mnop
+
+6. SMTP_FROM=yourgmail@gmail.com
+Ye sender email hota hai.
+Normally ye same Gmail hota hai jo SMTP_USER me hai.
+
+Example:
+SMTP_FROM=amansamraj7@gmail.com
+
+Important Notes
+
+- SMTP_USER aur SMTP_FROM me usually same email hota hai.
+- Gmail ka normal login password use mat karo.
+- App Password hi use karo.
+- Agar App Password galat hua to OTP email nahi jayega.
+- Agar ye values blank rahengi to OTP email ke bajay terminal me print hoga.
+
+Example Final Configuration
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=amansamraj7@gmail.com
+SMTP_PASS=your_16_character_app_password
+SMTP_FROM=amansamraj7@gmail.com

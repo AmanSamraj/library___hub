@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Verify Registration OTP</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page">
+
+<nav class="page-switcher" aria-label="Quick page links">
+  <a href="index.html">Home</a>
+  <a href="product.html">Products</a>
+  <a href="product-detail.html">Product Detail</a>
+  <a href="cart.html">Cart</a>
+  <a href="checkout.html">Checkout</a>
+  <a href="login.html">Login</a>
+  <a href="production.html">Production</a>
+</nav>
+
+<section class="section auth-wrap">
+  <div class="auth-panel interactive-card">
+    <div class="eyebrow">Step 2</div>
+    <h1>Verify OTP</h1>
+    <p id="otpInfo" class="auth-copy">Apne email par aaya hua 6-digit OTP enter karo. Sahi OTP hone par hi account register hoga.</p>
+
+    <form id="registerOtpForm" class="auth-form">
+      <label for="verifyEmail">Email</label>
+      <input id="verifyEmail" name="verifyEmail" type="email" placeholder="Enter your email" readonly>
+
+      <label for="verifyOtp">OTP</label>
+      <input id="verifyOtp" name="verifyOtp" type="text" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit OTP">
+
+      <button class="btn primary" type="submit">Verify OTP & Register</button>
+      <a class="btn ghost checkout-link" href="login.html">Back to Register</a>
+    </form>
+
+    <p id="verifyStatus" class="auth-copy"></p>
+  </div>
+</section>
+
+<script src="js/api-client.js?v=2"></script>
+<script src="js/register-otp.js?v=2"></script>
+
+</body>
+</html>

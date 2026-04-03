@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.use(requireDatabase, authenticate);
 
-router.post("/orders", createOrder);
-router.get("/orders", getOrders);
-router.get("/orders/:id", getOrder);
+router.post("/", createOrder);
+router.get("/", getOrders);
+router.get("/:id", getOrder);
 
 module.exports = router;

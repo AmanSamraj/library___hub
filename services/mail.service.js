@@ -11,7 +11,7 @@ const {
 
 function getMailTransporter() {
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !SMTP_FROM) {
-    throw new Error("SMTP email settings are missing. Please configure SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, and SMTP_FROM in .env");
+    return null;
   }
 
   return nodemailer.createTransport({
@@ -25,24 +25,44 @@ function getMailTransporter() {
   });
 }
 
-async function sendLoginOtpEmail(user, otp) {
+async function sendOtpEmail(user, otp, subject, introLine) {
   const transporter = getMailTransporter();
+
+  if (!transporter) {
+    console.log("[DEV OTP] " + subject + " for " + user.email + ": " + otp);
+    return {
+      delivery: "console"
+    };
+  }
 
   await transporter.sendMail({
     from: SMTP_FROM,
     to: user.email,
-    subject: "Your Library Hub login OTP",
+    subject: subject,
     text: [
       "Hello " + user.username + ",",
       "",
-      "Your Library Hub login OTP is: " + otp,
+      introLine + ": " + otp,
       "",
       "This code will expire in " + OTP_EXPIRY_MINUTES + " minutes.",
       "If you did not try to log in, please ignore this email."
     ].join("\n")
   });
+
+  return {
+    delivery: "email"
+  };
+}
+
+async function sendLoginOtpEmail(user, otp) {
+  return sendOtpEmail(user, otp, "Your Library Hub login OTP", "Your Library Hub login OTP is");
+}
+
+async function sendRegisterOtpEmail(user, otp) {
+  return sendOtpEmail(user, otp, "Your Library Hub registration OTP", "Your Library Hub registration OTP is");
 }
 
 module.exports = {
-  sendLoginOtpEmail
+  sendLoginOtpEmail,
+  sendRegisterOtpEmail
 };

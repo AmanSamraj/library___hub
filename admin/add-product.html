@@ -38,69 +38,97 @@
 
       <section class="grid-2">
         <div class="card">
-          <h3>Book Details</h3>
-          <div class="form-grid">
-            <div class="field">
-              <label>Title</label>
-              <input type="text" placeholder="The Creative Habit">
+          <h3>Product Details</h3>
+          <form id="addProductForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="productId">Product ID</label>
+                <input id="productId" name="productId" type="text" placeholder="jee-advanced-maths">
+                <div class="helper-text">Optional. Blank chhodoge to category + name se auto-generate ho jayega.</div>
+              </div>
+              <div class="field">
+                <label for="productName">Product Name</label>
+                <input id="productName" name="name" type="text" placeholder="JEE Advanced Maths" required>
+              </div>
+              <div class="field">
+                <label for="productCategory">Category</label>
+                <input id="productCategory" name="category" list="categoryOptions" type="text" placeholder="JEE" required>
+                <datalist id="categoryOptions">
+                  <option value="JEE"></option>
+                  <option value="NEET"></option>
+                  <option value="UPSC"></option>
+                  <option value="NDA"></option>
+                  <option value="NCERT CLASS 11-12"></option>
+                </datalist>
+              </div>
+              <div class="field">
+                <label for="productPrice">Price</label>
+                <input id="productPrice" name="price" type="number" min="0" step="1" placeholder="499" required>
+              </div>
+              <div class="field">
+                <label for="productBadge">Badge</label>
+                <input id="productBadge" name="badge" type="text" placeholder="New Arrival">
+              </div>
+              <div class="field">
+                <label for="productInventory">Inventory</label>
+                <input id="productInventory" name="inventory" type="number" min="0" step="1" value="0" required>
+              </div>
+              <div class="field">
+                <label for="productRating">Rating</label>
+                <input id="productRating" name="rating" type="number" min="0" max="5" step="0.1" value="4.5">
+              </div>
+              <div class="field">
+                <label for="productImage">Image Path</label>
+                <input id="productImage" name="image" type="text" placeholder="images/catalog/jee/new-book.jpg">
+              </div>
             </div>
-            <div class="field">
-              <label>Author</label>
-              <input type="text" placeholder="Twyla Tharp">
+            <div class="field" style="margin-top: 16px;">
+              <label for="productDescription">Description</label>
+              <textarea id="productDescription" name="description" placeholder="Short synopsis and key highlights."></textarea>
             </div>
-            <div class="field">
-              <label>ISBN</label>
-              <input type="text" placeholder="978-0735210172">
+            <div id="addProductMessage" class="form-message" hidden></div>
+            <div class="cta-row">
+              <button class="btn primary" id="saveProductButton" type="submit">Save to MongoDB</button>
+              <button class="btn ghost" id="resetProductButton" type="reset">Reset</button>
             </div>
-            <div class="field">
-              <label>Category</label>
-              <select>
-                <option>Self Help</option>
-                <option>Fiction</option>
-                <option>Non-Fiction</option>
-                <option>Kids</option>
-              </select>
-            </div>
-          </div>
-          <div class="field" style="margin-top: 16px;">
-            <label>Description</label>
-            <textarea placeholder="Short synopsis and key highlights."></textarea>
-          </div>
+          </form>
         </div>
 
         <div class="card">
-          <h3>Production Grade Option</h3>
+          <h3>Publish Checklist</h3>
           <div class="toggle">
             <div>
-              <strong>Publish with production-grade checks</strong>
-              <div class="muted">Auto price validation, metadata audit, and risk scoring.</div>
+              <strong>MongoDB-backed product publishing</strong>
+              <div class="muted">Product will be inserted into the live database used by catalog APIs.</div>
             </div>
             <label class="switch">
-              <input type="checkbox" checked>
+              <input type="checkbox" checked disabled>
               <span class="slider"></span>
             </label>
           </div>
           <div class="timeline">
             <div class="row">
-              <span>Quality Gate</span>
-              <span class="tag success">Pass</span>
+              <span>Database Target</span>
+              <span class="tag success">MongoDB</span>
             </div>
             <div class="row">
-              <span>Image Compliance</span>
-              <span class="tag warning">1 flag</span>
+              <span>Required Fields</span>
+              <span>Name, Category, Price</span>
             </div>
             <div class="row">
-              <span>Localization</span>
-              <span>Hindi + English</span>
+              <span>Image Field</span>
+              <span>Relative path recommended</span>
             </div>
-          </div>
-          <div class="cta-row">
-            <button class="btn primary" type="button">Save Draft</button>
-            <button class="btn outline" type="button">Publish</button>
+            <div class="row">
+              <span>Connection Requirement</span>
+              <span>Set <code>MONGODB_URI</code> in <code>.env</code></span>
+            </div>
           </div>
         </div>
       </section>
     </main>
   </div>
+  <script src="../js/api-client.js"></script>
+  <script src="../js/admin-add-product.js"></script>
 </body>
 </html>

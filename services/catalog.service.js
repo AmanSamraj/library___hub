@@ -6,6 +6,62 @@ const { formatProduct } = require("../utils/serializers.util");
 
 let fallbackProductsCache = null;
 
+function slugifyProductId(value) {
+  return String(value || "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function normalizeProductInput(input) {
+  const name = String(input.name || "").trim();
+  const category = String(input.category || "").trim();
+  const description = String(input.description || "").trim();
+  const badge = String(input.badge || "").trim();
+  const image = String(input.image || "").trim();
+  const price = Number(input.price);
+  const inventory = Number(input.inventory || 0);
+  const rating = input.rating === "" || input.rating === undefined || input.rating === null ? 0 : Number(input.rating);
+  const productId = String(input.id || input.productId || "").trim() || slugifyProductId([category, name].filter(Boolean).join(" "));
+
+  if (!name) {
+    throw new Error("Product name is required");
+  }
+
+  if (!category) {
+    throw new Error("Product category is required");
+  }
+
+  if (!productId) {
+    throw new Error("Product ID could not be generated");
+  }
+
+  if (!Number.isFinite(price) || price < 0) {
+    throw new Error("Price must be a valid non-negative number");
+  }
+
+  if (!Number.isFinite(inventory) || inventory < 0) {
+    throw new Error("Inventory must be a valid non-negative number");
+  }
+
+  if (!Number.isFinite(rating) || rating < 0 || rating > 5) {
+    throw new Error("Rating must be between 0 and 5");
+  }
+
+  return {
+    productId,
+    name,
+    price,
+    category,
+    badge,
+    description,
+    image,
+    inventory,
+    rating
+  };
+}
+
 function getProductsFilePath() {
   return path.join(__dirname, "..", "data", "products.json");
 }
@@ -136,9 +192,29 @@ async function getProductById(productId) {
   };
 }
 
+async function createProduct(input) {
+  const nextProduct = normalizeProductInput(input);
+
+  if (!isDatabaseReady()) {
+    throw new Error("MongoDB is not connected. MONGODB_URI set karke server restart karo.");
+  }
+
+  const existingProduct = await Product.findOne({ productId: nextProduct.productId });
+  if (existingProduct) {
+    throw new Error("A product with this ID already exists");
+  }
+
+  const createdProduct = await Product.create(nextProduct);
+  return {
+    message: "Product added successfully",
+    product: formatProduct(createdProduct)
+  };
+}
+
 module.exports = {
   seedProducts,
   listCategories,
   listProducts,
-  getProductById
+  getProductById,
+  createProduct
 };

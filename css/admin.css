@@ -344,6 +344,35 @@ body.admin {
   resize: vertical;
 }
 
+.helper-text {
+  font-size: 12px;
+  color: var(--ink-500);
+  line-height: 1.5;
+}
+
+.form-message {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.form-message.pending {
+  background: #eef4ff;
+  color: var(--brand-600);
+}
+
+.form-message.success {
+  background: #e9f8f0;
+  color: var(--success-500);
+}
+
+.form-message.error {
+  background: #fff1ef;
+  color: #d64545;
+}
+
 .timeline {
   display: grid;
   gap: 12px;

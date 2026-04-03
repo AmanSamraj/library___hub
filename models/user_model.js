@@ -35,6 +35,18 @@ const userSchema = new mongoose.Schema(
       trim: true,
       default: ""
     },
+    isVerified: {
+      type: Boolean,
+      default: false
+    },
+    registerOtpHash: {
+      type: String,
+      default: ""
+    },
+    registerOtpExpiresAt: {
+      type: Date,
+      default: null
+    },
     loginOtpHash: {
       type: String,
       default: ""
